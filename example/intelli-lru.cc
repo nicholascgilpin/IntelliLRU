@@ -45,9 +45,9 @@ void InitReplacementState()
 uint32_t GetVictimInSet (uint32_t cpu, uint32_t set, const BLOCK *current_set, uint64_t PC, uint64_t paddr, uint32_t type)
 {
     // LRU - Return least recently hit way (it'll be == to LLC_WAYS)
-    // for (int i=0; i<LLC_WAYS; i++)
-    //     if (table[set][i] == (LLC_WAYS-1))
-    //         return i;
+    for (int i=0; i<LLC_WAYS; i++)
+        if (table[set][i] == (LLC_WAYS-1))
+            return i;
     
     // LFU - Return the least frequently hit item (lowest value)
     // uint32_t min = 0;
